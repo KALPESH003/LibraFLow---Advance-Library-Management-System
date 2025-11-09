@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LibraFlow — Advanced LMS (HTML/CSS/JS)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>LibraFlow</h1>
+    <div class="controls">
+      <select id="roleSelect" title="Choose role">
+        <option value="member">Member</option>
+        <option value="librarian">Librarian</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button id="syncBtn" title="Simulate sync">Sync</button>
+    </div>
+  </header>
+
+  <main class="app-grid">
+    <section class="panel catalog-panel">
+      <div class="panel-head">
+        <h2>Catalog</h2>
+        <div class="panel-actions">
+          <button id="addBookBtn">+ Add Book</button>
+          <input id="searchBox" placeholder="Search title, author or tag..." />
+        </div>
+      </div>
+      <ul id="bookList" class="list"></ul>
+    </section>
+
+    <section class="panel operations-panel">
+      <div class="panel-head">
+        <h2>Operations</h2>
+      </div>
+
+      <div class="op-block">
+        <h3>Borrow / Return</h3>
+        <div class="op-row">
+          <input id="memberIdInput" placeholder="Member ID (e.g., mem-1)"/>
+          <select id="opBookSelect"></select>
+          <button id="borrowBtn">Borrow</button>
+          <button id="returnBtn">Return</button>
+        </div>
+      </div>
+
+      <div class="op-block">
+        <h3>Reservations</h3>
+        <div class="op-row">
+          <input id="resMemberId" placeholder="Member ID"/>
+          <select id="resBookSelect"></select>
+          <button id="reserveBtn">Reserve</button>
+        </div>
+      </div>
+
+      <div class="op-block">
+        <h3>Members</h3>
+        <div class="op-row">
+          <input id="newMemberName" placeholder="Member name" />
+          <button id="addMemberBtn">Add Member</button>
+        </div>
+        <ul id="memberList" class="list small"></ul>
+      </div>
+
+      <div class="op-block">
+        <h3>Task Queue</h3>
+        <p class="muted">Simulated async operations managed by a concurrency-limited queue.</p>
+        <div id="taskProgress" class="task-progress">
+          <div id="taskBar" style="width:0%"></div>
+        </div>
+        <div class="task-controls">
+          <label>Concurrency:
+            <input id="concurrencyInput" type="number" min="1" max="5" value="2" />
+          </label>
+          <button id="clearQueueBtn">Clear Queue</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel log-panel">
+      <div class="panel-head">
+        <h2>Activity Log</h2>
+        <button id="clearLog">Clear</button>
+      </div>
+      <ul id="activityLog" class="activity-list"></ul>
+    </section>
+  </main>
+
+  <!-- Modal for Add/Edit Book -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <h3 id="modalTitle">Add Book</h3>
+      <form id="bookForm">
+        <input id="bookTitle" placeholder="Title" required />
+        <input id="bookAuthor" placeholder="Author" required />
+        <input id="bookTags" placeholder="Tags (comma separated)" />
+        <input id="bookCopies" type="number" min="1" value="1" required />
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Save</button>
+          <button type="button" id="modalCancel" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
