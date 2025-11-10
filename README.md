@@ -74,7 +74,7 @@ LibraFlow/
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/KALPESH003/LibraFlow---Advance-Library-Management-System.git
+   git clone https://github.com/KALPESH003/LibraFLow---Advance-Library-Management-System.git
    ```
 2. Navigate into the folder
 3. Open index.html in your browser to start the application.
@@ -83,7 +83,7 @@ LibraFlow/
 ## 👤 Author
 KALPESH K. SUTHAR
 
-If you like *PassSentinel*, give it a star ⭐ on GitHub and showcase your support!
+If you like *LibraFlow*, give it a star ⭐ on GitHub and showcase your support!
 
 ---
 
